@@ -1,0 +1,44 @@
+{
+	// Globals
+	"globals": {
+		"require": false,
+		"define": false
+	},
+
+	// Environments
+	"browser": true,
+	"worker": true,
+
+	// Warnings
+	"es5": true,
+	"bitwise": false,
+	"camelcase": true,
+	"curly": true,
+	"eqeqeq": true,
+	"forin": true,
+	"immed": true,
+	"indent": 4,
+	"latedef": true,
+	"newcap": true,
+	"noarg": true,
+	"noempty": true,
+	"plusplus": false,
+	"quotmark": "single",
+	"regexp": false,
+	"undef": true,
+	"strict": true,
+	"trailing": true,
+	"white": false,
+	"maxdepth": 4,
+	"eqnull": true,
+
+	// Taken out due to the collision it causes with the open event parameter
+	// "unused": true,
+	// Taken out due to RequireJS and Realtime Optimization collisions
+	// "maxparams": 7,
+
+	// Suppressions
+	"evil": false,
+	"onecase": true,
+	"devel": true
+}
