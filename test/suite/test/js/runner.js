@@ -7,8 +7,8 @@ require([
     mocha.setup('bdd');
     
     require([
-        
-    ], function() {
+        '../../../../dist/RunLoop'
+    ], function(RunLoop) {
         mocha.run();
     });
 });

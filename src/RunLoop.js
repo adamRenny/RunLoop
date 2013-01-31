@@ -1,3 +1,4 @@
+/*global root:true */
 /**
  * @fileOverview
  * Copyright (c) 2012-2013 Adam Ranfelt
@@ -406,6 +407,6 @@ define([
      * @since 1.1
      */
     RunLoop.ALL_CYCLES = 3;
-    
+
     return RunLoop;
 });
