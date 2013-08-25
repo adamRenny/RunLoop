@@ -1,4 +1,9 @@
 # RELEASE NOTE/CHANGESET
 
+## v1.3
+ - Added performanceNow polyfill
+ - Added support for the updated passed performance calculations
+ - Updated build structure to use ```grunt``` instead of manual ```r.js```
+
 ## v1.0
  - Extracted from LayerJS to run independently
