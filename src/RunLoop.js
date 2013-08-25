@@ -25,10 +25,10 @@
  *
  * RunLoop Module Definition
  * @author Adam Ranfelt
- * @version 1.2
+ * @version 1.3
  */
 define([
-    'requestAnimFrame'
+    'requestAnimFrame.polyfill'
 ], function(
     rAF
 ) {
@@ -58,6 +58,16 @@ define([
      * @since 1.2
      */
     var cancelAnimFrame = rAF.cancelAnimFrame;
+
+    /**
+     * performance.now Polyfill
+     * Allows microsecond level calculations using the `now` method
+     *
+     * @private
+     * @type {object}
+     * @since 1.3
+     */
+    var performance = rAF.performance;
     
     /**
      * Max number of milliseconds allowed within a frame
@@ -149,7 +159,7 @@ define([
          * @type {number}
          * @since 1.0
          */
-        this.lastTimestamp = Date.now();
+        this.lastTimestamp = performance.now();
         
         /**
          * Flag for whether or not the RunLoop is looping
@@ -185,7 +195,7 @@ define([
      */
     RunLoop.prototype.start = function() {
         this.isLooping = true;
-        this.lastTimestamp = Date.now();
+        this.lastTimestamp = performance.now();
         requestAnimFrame(this.step);
         
         return this;
@@ -339,18 +349,19 @@ define([
     
     /**
      * Step function
-     * Single run loop increment, calculated dynamically
+     * Single run loop increment
+     * Time since last calculation provided by requestAnimationFrame
      *
+     * @param {number} timestamp Time since the beginning of the page
      * @since 1.0
      */
-    RunLoop.prototype._step = function() {
+    RunLoop.prototype._step = function(timestamp) {
         if (!this.isLooping) {
             return;
         }
         
         requestAnimFrame(this.step);
-        
-        var timestamp = Date.now();
+
         var elapsed = timestamp - this.lastTimestamp;
         
         if (elapsed >= FRAME_THRESHOLD) {
